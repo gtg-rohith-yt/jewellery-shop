@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import { Product } from "@/lib/types";
-import { Heart, Plus, Sparkles } from "lucide-react";
+import { Heart, Plus, Sparkles, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -28,16 +28,16 @@ export function ProductCard({ product, onAddToCart, onToggleWishlist, isWishlist
           data-ai-hint={product.category}
         />
         
-        {/* Badges/Tags */}
+        {/* Badges */}
         <div className="absolute top-4 left-4 flex flex-col gap-2">
-          {product.price > 5000 && (
-            <Badge className="bg-white/90 backdrop-blur-sm text-foreground text-[8px] font-bold uppercase tracking-widest border-none px-2 py-0.5">
-              Bestseller
+          {product.discount && (
+            <Badge className="bg-primary text-white text-[8px] font-bold uppercase tracking-widest border-none px-2 py-0.5">
+              {product.discount}
             </Badge>
           )}
-          {product.category === 'Earrings' && (
-            <Badge className="bg-primary text-white text-[8px] font-bold uppercase tracking-widest border-none px-2 py-0.5">
-              New
+          {product.stock < 5 && (
+            <Badge variant="destructive" className="text-[8px] font-bold uppercase tracking-widest border-none px-2 py-0.5">
+              Low Stock
             </Badge>
           )}
         </div>
@@ -58,9 +58,10 @@ export function ProductCard({ product, onAddToCart, onToggleWishlist, isWishlist
           <Button
             className="w-full bg-foreground text-white hover:bg-primary rounded-none h-11 text-[10px] font-bold uppercase tracking-widest transition-colors shadow-2xl"
             onClick={() => onAddToCart(product)}
+            disabled={product.stock === 0}
           >
             <Plus className="h-3 w-3 mr-2" />
-            Quick Add
+            {product.stock === 0 ? 'Out of Stock' : 'Quick Add'}
           </Button>
         </div>
       </div>
@@ -72,7 +73,7 @@ export function ProductCard({ product, onAddToCart, onToggleWishlist, isWishlist
             {product.category}
           </span>
           <div className="flex items-center justify-center md:justify-end gap-1 text-[10px] text-primary font-bold">
-             <Sparkles className="h-3 w-3" /> Handcrafted
+             <Star className="h-3 w-3 fill-primary" /> {product.rating}
           </div>
         </div>
         
@@ -82,8 +83,8 @@ export function ProductCard({ product, onAddToCart, onToggleWishlist, isWishlist
         
         <div className="flex items-center justify-center md:justify-start gap-2 pt-1">
           <span className="text-sm font-bold text-foreground">₹{product.price.toLocaleString()}</span>
-          {product.price > 4000 && (
-             <span className="text-[10px] text-muted-foreground line-through">₹{(product.price * 1.2).toLocaleString()}</span>
+          {product.oldPrice && (
+             <span className="text-[10px] text-muted-foreground line-through">₹{product.oldPrice.toLocaleString()}</span>
           )}
         </div>
       </div>

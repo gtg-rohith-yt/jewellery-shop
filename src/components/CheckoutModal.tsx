@@ -5,14 +5,14 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { CartItem } from "@/lib/types";
-import { Copy, QrCode, MessageCircle, Info, ShieldCheck, MapPin, Phone, User, CreditCard, Calendar } from "lucide-react";
+import { Copy, QrCode, MessageCircle, Info, ShieldCheck, MapPin, Phone, User, CreditCard } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import Image from "next/image";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
+import { BUSINESS_DETAILS } from "@/data/business";
 
 interface CheckoutModalProps {
   open: boolean;
@@ -22,8 +22,7 @@ interface CheckoutModalProps {
 }
 
 export function CheckoutModal({ open, onOpenChange, total, items }: CheckoutModalProps) {
-  const upiId = 'kaverirohith09@okicici';
-  const whatsappNumber = '919043253446';
+  const { upiId, upiQr, whatsappNumber } = BUSINESS_DETAILS;
 
   const [formData, setFormData] = useState({
     name: '',
@@ -57,7 +56,7 @@ export function CheckoutModal({ open, onOpenChange, total, items }: CheckoutModa
     
     const itemStrings = items.map(i => `• ${i.name}\n  Qty: ${i.quantity} × ₹${i.price.toLocaleString()} = ₹${(i.price * i.quantity).toLocaleString()}`).join('\n\n');
     
-    const message = `✨ *AURA JEWELS - ORDER REQUEST* ✨
+    const message = `✨ *ORDER REQUEST - ${BUSINESS_DETAILS.businessName.toUpperCase()}* ✨
 -------------------------------------------
 📅 *Order Date:* ${timestamp}
 
@@ -101,7 +100,6 @@ I have initiated the payment. I am sharing this message along with the transacti
 
         <ScrollArea className="max-h-[70vh] px-8 pb-8">
           <div className="space-y-8 py-6">
-            {/* Step 1: Payment */}
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-[11px] font-bold text-white">1</div>
@@ -125,7 +123,7 @@ I have initiated the payment. I am sharing this message along with the transacti
                 <div className="flex items-center gap-6 py-2">
                   <div className="relative h-28 w-28 bg-white p-2 rounded-xl border luxury-shadow flex-shrink-0">
                     <Image 
-                      src="https://picsum.photos/seed/aura-upi/200/200" 
+                      src={upiQr} 
                       alt="UPI QR Code" 
                       width={200} 
                       height={200}
@@ -137,7 +135,7 @@ I have initiated the payment. I am sharing this message along with the transacti
                   </div>
                   <div className="space-y-2">
                     <p className="text-xs text-muted-foreground leading-relaxed">
-                      Scan the QR code with any UPI app (GPay, PhonePe, Paytm) to make the payment of 
+                      Scan the QR code with any UPI app to pay
                       <span className="font-bold text-foreground"> ₹{total.toLocaleString()}</span>.
                     </p>
                   </div>
@@ -147,7 +145,6 @@ I have initiated the payment. I am sharing this message along with the transacti
 
             <Separator className="bg-foreground/5" />
 
-            {/* Step 2: Delivery Details */}
             <div className="space-y-6">
               <div className="flex items-center gap-3">
                 <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-[11px] font-bold text-white">2</div>
@@ -181,7 +178,7 @@ I have initiated the payment. I am sharing this message along with the transacti
 
                 <div className="space-y-1.5">
                   <Textarea 
-                    placeholder="Complete Delivery Address (House No, Street, Landmark) *" 
+                    placeholder="Complete Delivery Address *" 
                     className="min-h-[100px] p-4 rounded-xl border-none bg-secondary/50 focus-visible:ring-1 focus-visible:ring-primary/20 resize-none"
                     value={formData.address}
                     onChange={(e) => setFormData({...formData, address: e.target.value})}
@@ -190,13 +187,13 @@ I have initiated the payment. I am sharing this message along with the transacti
 
                 <div className="grid grid-cols-2 gap-4">
                   <Input 
-                    placeholder="City / Town *" 
+                    placeholder="City *" 
                     className="h-14 rounded-xl border-none bg-secondary/50 focus-visible:ring-1 focus-visible:ring-primary/20 px-5"
                     value={formData.city}
                     onChange={(e) => setFormData({...formData, city: e.target.value})}
                   />
                   <Input 
-                    placeholder="Pincode (6 Digits) *" 
+                    placeholder="Pincode *" 
                     className="h-14 rounded-xl border-none bg-secondary/50 focus-visible:ring-1 focus-visible:ring-primary/20 px-5"
                     value={formData.pincode}
                     onChange={(e) => setFormData({...formData, pincode: e.target.value.replace(/\D/g, '').slice(0, 6)})}
@@ -216,7 +213,7 @@ I have initiated the payment. I am sharing this message along with the transacti
               {!isFormValid && (
                 <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-destructive/80 bg-destructive/5 p-3 rounded-lg border border-destructive/10">
                   <Info className="h-3 w-3" /> 
-                  Complete all required fields to proceed
+                  Complete required fields to proceed
                 </div>
               )}
               
@@ -228,17 +225,6 @@ I have initiated the payment. I am sharing this message along with the transacti
                 <MessageCircle className="h-6 w-6 group-hover:scale-110 transition-transform" />
                 <span className="uppercase tracking-widest text-xs">Confirm via WhatsApp</span>
               </Button>
-              
-              <div className="space-y-3">
-                <p className="text-[10px] text-center text-muted-foreground uppercase tracking-widest font-bold flex items-center justify-center gap-2">
-                  <Info className="h-3 w-3" /> Note: Attach payment proof in WhatsApp chat
-                </p>
-                <div className="flex justify-center gap-6">
-                  {['GPAY', 'PHONEPE', 'PAYTM', 'UPI'].map(pay => (
-                    <span key={pay} className="text-[8px] font-black text-muted-foreground tracking-[0.3em]">{pay}</span>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
         </ScrollArea>

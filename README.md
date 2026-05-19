@@ -1,59 +1,51 @@
 
-# Aura Jewels | Handmade Minimalist Luxury
+# 💎 Aura Jewels | Easy Management Guide
 
-This is a premium Next.js 15 application for **Aura Jewels**, featuring a handcrafted jewelry collection with a direct-to-WhatsApp ordering system and UPI payment integration.
+This website is designed for beginners. You can manage everything by editing simple text files. **No coding required!**
 
-## ✨ Features
+## 📂 How to Manage Your Website
 
-- **Modern UI**: Built with React 19, Next.js 15, and Tailwind CSS.
-- **Shopping Experience**: Integrated Cart and Wishlist functionality.
-- **Checkout Form**: Captures customer details (Name, Phone, Address, City, Pincode) before ordering.
-- **WhatsApp Integration**: Generates a pre-formatted order message including customer and product details.
-- **Responsive Design**: Optimized for both mobile and desktop users.
-- **PWA Ready**: Includes manifest for installation on mobile devices.
+All your data is stored in the `src/data/` folder.
 
-## 🚀 Getting Started
+### 1. Adding/Editing Products
+Open `src/data/products.ts`. You will see a list of products. To add a new one, copy an existing product block and change the details.
+- **`price`**: Current selling price.
+- **`oldPrice`**: Original price (shows as strikethrough).
+- **`image`**: Link to image or path like `/products/my-ring.jpg`.
 
-First, install dependencies and run the development server:
+### 2. Changing Business Details
+Open `src/data/business.ts`. Here you can change:
+- **`whatsappNumber`**: Your WhatsApp number (Include country code, NO plus sign).
+- **`upiId`**: Your UPI ID for payments.
+- **`socialLinks`**: Instagram and Facebook links.
+- **`shipping`**: Set delivery charges and free shipping limits.
 
-```bash
-npm install
-npm run dev
-```
+### 3. Replacing Images
+Go to the `public/` folder on your computer:
+- Put product images in `public/products/`.
+- Put banner images in `public/banners/`.
+- Put your UPI QR code in `public/payment/qr.jpg`.
+- Put your logo in `public/logo/logo.png`.
 
-Open [http://localhost:9002](http://localhost:9002) with your browser to see the result.
+*Note: Make sure the file names in your data files match the names in these folders.*
 
-## 📦 Deployment
+### 4. Updating Categories
+Open `src/data/categories.ts` to add or rename jewellery categories (e.g., Rings, Necklaces).
 
-### GitHub & Netlify
+---
 
-To push this project to your GitHub repository and deploy:
+## 🚀 How to Deploy Updates
 
-1. **Initialize Git**:
+1. **Edit Files**: Make your changes in VS Code.
+2. **Commit & Push**:
    ```bash
-   git init
    git add .
-   git commit -m "Initial commit: Aura Jewels Shop"
+   git commit -m "Updated products and prices"
+   git push origin main
    ```
-
-2. **Push to GitHub**:
-   *(Replace `<your-username>` with your actual GitHub username)*
-   ```bash
-   git remote add origin https://github.com/<your-username>/jewellery-shop.git
-   git branch -M main
-   git push -u origin main
-   ```
-
-3. **Deploy to Netlify**:
-   - Go to [Netlify](https://app.netlify.com/).
-   - Click **Add new site** > **Import from an existing project**.
-   - Select **GitHub** and authorize.
-   - Choose the `jewellery-shop` repository.
-   - Netlify will automatically detect the Next.js settings. Click **Deploy**.
+3. **Automatic Update**: Netlify will automatically detect the push and update your website in 1-2 minutes!
 
 ## 🛠 Tech Stack
-
-- **Framework**: Next.js 15 (App Router)
-- **Styling**: Tailwind CSS + ShadCN UI
-- **Icons**: Lucide React
-- **State Management**: Zustand (Local Storage persistence)
+- **Framework**: Next.js 15
+- **Data**: Static TypeScript Objects
+- **Deployment**: GitHub + Netlify
