@@ -1,0 +1,47 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "pearl-earrings",
+      "description": "Elegant handmade pearl earrings",
+      "imageUrl": "https://picsum.photos/seed/earrings/600/600",
+      "imageHint": "pearl earrings"
+    },
+    {
+      "id": "gold-bracelet",
+      "description": "Premium handmade gold bracelet",
+      "imageUrl": "https://picsum.photos/seed/bracelet/600/600",
+      "imageHint": "gold bracelet"
+    },
+    {
+      "id": "stone-necklace",
+      "description": "Artisan stone necklace",
+      "imageUrl": "https://picsum.photos/seed/necklace/600/600",
+      "imageHint": "stone necklace"
+    },
+    {
+      "id": "ring-set",
+      "description": "Minimalist ring sets",
+      "imageUrl": "https://picsum.photos/seed/rings/600/600",
+      "imageHint": "ring set"
+    },
+    {
+      "id": "pendant",
+      "description": "Rose gold heart pendant",
+      "imageUrl": "https://picsum.photos/seed/pendant/600/600",
+      "imageHint": "gold pendant"
+    },
+    {
+      "id": "anklet",
+      "description": "Handcrafted silver anklets",
+      "imageUrl": "https://picsum.photos/seed/anklet/600/600",
+      "imageHint": "silver anklet"
+    },
+    {
+      "id": "hero-jewelry",
+      "description": "Hero banner jewelry display",
+      "imageUrl": "https://picsum.photos/seed/hero/1200/600",
+      "imageHint": "jewelry model"
+    }
+  ]
+}
