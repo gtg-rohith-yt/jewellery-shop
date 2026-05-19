@@ -1,67 +1,66 @@
 
-"use client";
-
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
 import { Lock, UserCheck, EyeOff, ShieldAlert } from 'lucide-react';
 
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      <Header showSearch={false} />
-      
-      <main className="flex-1 py-20">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <div className="text-center mb-16 space-y-4">
-            <h1 className="text-4xl md:text-5xl font-headline font-bold italic">Privacy Policy</h1>
-            <p className="text-muted-foreground uppercase tracking-widest text-[10px] font-bold">Your trust is our most precious asset</p>
+      <main className="flex-1 py-32">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-24 space-y-4">
+            <h3 className="text-[10px] font-bold tracking-[0.5em] uppercase text-primary">Confidentiality</h3>
+            <h1 className="text-5xl md:text-7xl font-headline font-bold italic">Privacy Ethos</h1>
+            <p className="text-muted-foreground uppercase tracking-widest text-[10px] font-bold">Your privacy is as rare as our gemstones</p>
           </div>
 
-          <div className="bg-secondary/20 p-8 md:p-12 rounded-3xl space-y-12">
-            <section className="space-y-4">
-              <div className="flex items-center gap-3">
-                <UserCheck className="h-5 w-5 text-primary" />
-                <h3 className="text-xl font-headline font-bold italic">Data Usage</h3>
+          <div className="bg-secondary/20 p-12 md:p-20 rounded-[3rem] space-y-16 luxury-shadow">
+            <section className="space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center">
+                  <UserCheck className="h-5 w-5 text-primary" />
+                </div>
+                <h3 className="text-2xl font-headline font-bold italic">Data Integrity</h3>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed font-light">
-                Customer details such as your name, phone number, and address are collected and used exclusively for the purpose of order processing, fulfillment, and delivery. We believe in keeping your experience focused on the beauty of our jewellery.
+              <p className="text-base text-muted-foreground leading-relaxed font-light">
+                We collect your name, phone number, and address strictly for artisanal fulfillment. Every piece of data shared with us is treated with the same reverence as the materials we use in our studio.
               </p>
             </section>
 
-            <section className="space-y-4">
-              <div className="flex items-center gap-3">
-                <Lock className="h-5 w-5 text-primary" />
-                <h3 className="text-xl font-headline font-bold italic">Confidentiality</h3>
+            <section className="space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Lock className="h-5 w-5 text-primary" />
+                </div>
+                <h3 className="text-2xl font-headline font-bold italic">Internal Security</h3>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed font-light">
-                Your phone number and physical address are kept strictly private within our internal order management system. We employ industry-standard security measures to protect this sensitive information from unauthorized access.
+              <p className="text-base text-muted-foreground leading-relaxed font-light">
+                Our internal order management is encrypted and inaccessible to unauthorized entities. We use industry-standard protocols to ensure that your private details remain just that—private.
               </p>
             </section>
 
-            <section className="space-y-4">
-              <div className="flex items-center gap-3">
-                <EyeOff className="h-5 w-5 text-primary" />
-                <h3 className="text-xl font-headline font-bold italic">No Third-Party Sharing</h3>
+            <section className="space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center">
+                  <EyeOff className="h-5 w-5 text-primary" />
+                </div>
+                <h3 className="text-2xl font-headline font-bold italic">Absolute Exclusivity</h3>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed font-light">
-                We respect your privacy deeply. Customer information is never sold, traded, or shared with third-party marketing firms. The only external parties who see your address are our trusted logistics partners who handle the actual delivery.
+              <p className="text-base text-muted-foreground leading-relaxed font-light">
+                Aura Jewels has a zero-tolerance policy for third-party data trading. Your information is never sold or shared for marketing. The only external partners who see your details are our logistics couriers.
               </p>
             </section>
 
-            <section className="space-y-4">
-              <div className="flex items-center gap-3">
+            <section className="pt-10 border-t border-primary/10 space-y-6">
+              <div className="flex items-center gap-4">
                 <ShieldAlert className="h-5 w-5 text-primary" />
-                <h3 className="text-xl font-headline font-bold italic">Your Consent</h3>
+                <h3 className="text-2xl font-headline font-bold italic">Client Consent</h3>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed font-light italic">
-                By placing an order on our platform, you consent to the collection and use of information in accordance with this policy. We will always update this page if any significant changes are made to our data handling practices.
+              <p className="text-base text-muted-foreground leading-relaxed font-light italic opacity-80">
+                By engaging with our platform and placing an order, you acknowledge and agree to our data handling practices. We remain committed to transparency and will notify you of any changes to this ethos.
               </p>
             </section>
           </div>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }
