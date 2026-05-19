@@ -127,7 +127,7 @@ I have initiated the payment. I am sharing this message along with the transacti
                       alt="UPI QR Code" 
                       width={200} 
                       height={200}
-                      className="rounded-lg grayscale hover:grayscale-0 transition-all duration-500"
+                      className="rounded-lg"
                     />
                     <div className="absolute inset-0 flex items-center justify-center bg-white/5 backdrop-blur-[1px] rounded-xl pointer-events-none">
                        <QrCode className="h-6 w-6 text-primary/20" />
